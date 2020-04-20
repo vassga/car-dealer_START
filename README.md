@@ -3,5 +3,4 @@
 
 
 # Run this Project
-Run the /release/car-dealer-1.0.jar file
-Open your webbrowser then go to localhost:8080/
+Run Clean and Install as Maven Project then Open your webbrowser and go to localhost:8080/
