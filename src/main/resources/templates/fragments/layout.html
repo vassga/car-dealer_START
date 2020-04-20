@@ -1,0 +1,81 @@
+<!doctype html>
+<html th:fragment="layout (template, menu)">
+
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/logo.jpg}">
+
+    <title>CarDealer: Demo Spring-Boot Project by [YOUR NAME]</title>
+
+    <link rel="stylesheet" th:href="@{/resources/css/cardealer.css}"/>
+
+  </head>
+
+<body>
+
+   <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+      	  <div class="navbar-header">
+              <a class="navbar-brand" th:href="@{/}"><span></span></a>
+          </div>
+          <div class="navbar-collapse collapse" id="main-navbar">
+              <ul class="nav navbar-nav navbar-right">
+  
+                  <li th:fragment="menuItem (path,active,title,glyph,text)" class="active" th:class="${active==menu ? 'active' : ''}">
+                      <a th:href="@{__${path}__}" th:title="${title}">
+                        <span th:class="'glyphicon  glyphicon-'+${glyph}" class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                        <span th:text="${text}">Template</span>
+                      </a>
+                  </li>
+  
+                  <li th:replace="::menuItem ('/','home','home page','','Home')">
+                      <span>Home</span>
+                  </li>
+  
+                  <li th:replace="::menuItem ('/salesman/find','salesman','Find Salesman','','Find Salesman')">
+                      <span>Find owners</span>
+                  </li>
+  
+                  <li th:replace="::menuItem ('/advertisementList.html','ads','Show Advertisements','','Advertisements')">
+                      <span>Veterinarians</span>
+                  </li>
+  
+                  <li th:replace="::menuItem ('/oups','error','Trigger a RuntimeException to see how it is handled','','Error')">
+                      <span>Error</span>
+                  </li>
+  
+ 				  <li th:replace="::menuItem ('/reset','reset','Reset the DB Content to default, after deletes or updates','','Reset DB')">
+                      <span>Reset DB</span>
+                  </li>
+                  
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <div class="container-fluid">
+      <div class="container xd-container">
+  
+          <th:block th:include="${template}"/>
+
+        <br/>
+        <br/>
+        <div class="container">
+          <div class="row">
+          	<div class="col-12 text-center">
+              <img style="padding-top: 60px;" src="../static/ProfilePic.jpg" th:src="@{/ProfilePic.jpg}"
+                alt="Implemented by [YOUR NAME]"/></div>
+            <div class="col-12 text-center" style="padding-top: 15px;"><em>Implemented by [YOUR NAME]</em></div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+</body>
+
+</html>
